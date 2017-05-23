@@ -12,14 +12,16 @@ import java.awt.event.ActionListener;
  *
  * @author pedrowarmlingbotelho
  */
-public class FormPadrao extends javax.swing.JInternalFrame implements ActionListener {
+public abstract class FormPadrao extends javax.swing.JInternalFrame implements ActionListener {
 
     /**
      * Creates new form FormPadrao
      */
     public FormPadrao() {
         initComponents();
+        bConfirmar.addActionListener(this);
         bCancelar.addActionListener(this);
+        bLimpar.addActionListener(this);
     }
 
     /**
@@ -84,8 +86,19 @@ public class FormPadrao extends javax.swing.JInternalFrame implements ActionList
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("Cancelar")){
-            this.dispose();
+        switch(e.getActionCommand()){
+            case "Confirmar":
+                bConfirmarActionPerformed(e);
+                break;
+            case "Limpar":
+                bLimparActionPerformed(e);
+                break;
+            case "Cancelar":
+                bCancelarActionPerformed(e);
+                break;
         }
     }
+    public abstract void bConfirmarActionPerformed(ActionEvent ae);
+    public abstract void bLimparActionPerformed(ActionEvent ae);
+    public abstract void bCancelarActionPerformed(ActionEvent ae);
 }

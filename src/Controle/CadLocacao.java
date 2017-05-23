@@ -5,6 +5,10 @@
  */
 package Controle;
 
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pedrowarmlingbotelho
@@ -36,6 +40,8 @@ public class CadLocacao extends FormPadrao {
         tDataInicio = new javax.swing.JFormattedTextField();
         lDataFim = new javax.swing.JLabel();
         tDataFim = new javax.swing.JFormattedTextField();
+        bConsultarCliente = new javax.swing.JButton();
+        bConsultarImovel = new javax.swing.JButton();
 
         setName("Adicionar Locação"); // NOI18N
 
@@ -58,6 +64,10 @@ public class CadLocacao extends FormPadrao {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        bConsultarCliente.setText("Consultar");
+
+        bConsultarImovel.setText("Consultar");
 
         javax.swing.GroupLayout painelCLayout = new javax.swing.GroupLayout(painelC);
         painelC.setLayout(painelCLayout);
@@ -82,7 +92,11 @@ public class CadLocacao extends FormPadrao {
                         .addGap(18, 18, 18)
                         .addComponent(tDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(54, 54, 54)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bConsultarCliente)
+                    .addComponent(bConsultarImovel))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         painelCLayout.setVerticalGroup(
             painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,11 +104,13 @@ public class CadLocacao extends FormPadrao {
                 .addGap(35, 35, 35)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lCliente)
-                    .addComponent(tCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bConsultarCliente))
                 .addGap(18, 18, 18)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lImovel)
-                    .addComponent(tImovel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tImovel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bConsultarImovel))
                 .addGap(18, 18, 18)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lDataInicio)
@@ -103,7 +119,7 @@ public class CadLocacao extends FormPadrao {
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lDataFim)
                     .addComponent(tDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         getContentPane().add(painelC, java.awt.BorderLayout.CENTER);
@@ -113,6 +129,8 @@ public class CadLocacao extends FormPadrao {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bConsultarCliente;
+    private javax.swing.JButton bConsultarImovel;
     private javax.swing.JLabel lCliente;
     private javax.swing.JLabel lDataFim;
     private javax.swing.JLabel lDataInicio;
@@ -123,4 +141,32 @@ public class CadLocacao extends FormPadrao {
     private javax.swing.JFormattedTextField tDataInicio;
     private javax.swing.JTextField tImovel;
     // End of variables declaration//GEN-END:variables
+
+
+    @Override
+    public void bConfirmarActionPerformed(ActionEvent ae) {
+        ArrayList locacao = new ArrayList();
+        locacao.add(tCliente.getText());
+        locacao.add(tImovel.getText());
+        locacao.add(tDataInicio.getText());
+        locacao.add(tDataFim.getText());
+        
+        JOptionPane.showMessageDialog(null, "Itens inseridos com sucesso!");
+        for (int i = 0; i < locacao.size(); i++) {
+            System.out.println(locacao.get(i));
+        }
+    }
+
+    @Override
+    public void bLimparActionPerformed(ActionEvent ae) {
+        tCliente.setText("");
+        tImovel.setText("");
+        tDataInicio.setText("");
+        tDataFim.setText("");
+    }
+
+    @Override
+    public void bCancelarActionPerformed(ActionEvent ae) {
+        this.dispose();
+    }
 }

@@ -5,6 +5,10 @@
  */
 package Controle;
 
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pedrowarmlingbotelho
@@ -27,17 +31,17 @@ public class CadImoveis extends FormPadrao {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        painelC = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        tId = new javax.swing.JTextField();
-        lId = new javax.swing.JLabel();
+        painelN = new javax.swing.JPanel();
+        lTipo = new javax.swing.JLabel();
+        cbTipo = new javax.swing.JComboBox<>();
         tTamanho = new javax.swing.JTextField();
+        lId = new javax.swing.JLabel();
+        tId = new javax.swing.JTextField();
         lTamanho = new javax.swing.JLabel();
         lQuartos = new javax.swing.JLabel();
-        tQuartos = new javax.swing.JTextField();
-        lBanheiros = new javax.swing.JLabel();
         tBanheiros = new javax.swing.JTextField();
+        lBanheiros = new javax.swing.JLabel();
+        tQuartos = new javax.swing.JTextField();
         tValor = new javax.swing.JTextField();
         lValor = new javax.swing.JLabel();
         lCEP = new javax.swing.JLabel();
@@ -51,9 +55,9 @@ public class CadImoveis extends FormPadrao {
 
         setName("Cadastro de Imóveis"); // NOI18N
 
-        jLabel1.setText("Tipo do Imóvel:");
+        lTipo.setText("Tipo do Imóvel:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Apartamento", "Terreno", "Comercial" }));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Apartamento", "Terreno", "Comercial" }));
 
         lId.setText("Identificação:");
 
@@ -82,100 +86,100 @@ public class CadImoveis extends FormPadrao {
 
         lUF.setText("UF:");
 
-        javax.swing.GroupLayout painelCLayout = new javax.swing.GroupLayout(painelC);
-        painelC.setLayout(painelCLayout);
-        painelCLayout.setHorizontalGroup(
-            painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelCLayout.createSequentialGroup()
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelCLayout.createSequentialGroup()
+        javax.swing.GroupLayout painelNLayout = new javax.swing.GroupLayout(painelN);
+        painelN.setLayout(painelNLayout);
+        painelNLayout.setHorizontalGroup(
+            painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelNLayout.createSequentialGroup()
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelNLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lTipo)
                             .addComponent(lId))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(painelCLayout.createSequentialGroup()
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(painelNLayout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lCidade)
                             .addComponent(lTamanho)
                             .addComponent(lQuartos)
                             .addComponent(lValor))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(painelCLayout.createSequentialGroup()
-                                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(painelCLayout.createSequentialGroup()
-                                        .addComponent(tBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(painelNLayout.createSequentialGroup()
+                                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(painelNLayout.createSequentialGroup()
+                                        .addComponent(tQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lBanheiros)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(painelCLayout.createSequentialGroup()
+                                        .addComponent(tBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(painelNLayout.createSequentialGroup()
                                         .addComponent(tCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(51, 51, 51)
                                         .addComponent(lUF)))
                                 .addGap(18, 18, 18)
                                 .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(tValor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(painelCLayout.createSequentialGroup()
+                    .addGroup(painelNLayout.createSequentialGroup()
                         .addGap(118, 118, 118)
-                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lCEP)
                             .addComponent(lEndereco))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
-        painelCLayout.setVerticalGroup(
-            painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCLayout.createSequentialGroup()
+        painelNLayout.setVerticalGroup(
+            painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelNLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lTipo))
                 .addGap(18, 18, 18)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lId)
-                    .addComponent(tTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lCEP))
                 .addGap(8, 8, 8)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lEndereco)
                     .addComponent(tEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lUF)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lCidade))
                 .addGap(18, 18, 18)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lTamanho)
-                    .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lQuartos)
-                    .addComponent(tBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lBanheiros)
-                    .addComponent(tQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lValor)
                     .addComponent(tValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 64, Short.MAX_VALUE))
+                .addGap(0, 17, Short.MAX_VALUE))
         );
 
-        getContentPane().add(painelC, java.awt.BorderLayout.CENTER);
+        getContentPane().add(painelN, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -183,8 +187,7 @@ public class CadImoveis extends FormPadrao {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbEstado;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cbTipo;
     private javax.swing.JLabel lBanheiros;
     private javax.swing.JLabel lCEP;
     private javax.swing.JLabel lCidade;
@@ -192,9 +195,10 @@ public class CadImoveis extends FormPadrao {
     private javax.swing.JLabel lId;
     private javax.swing.JLabel lQuartos;
     private javax.swing.JLabel lTamanho;
+    private javax.swing.JLabel lTipo;
     private javax.swing.JLabel lUF;
     private javax.swing.JLabel lValor;
-    private javax.swing.JPanel painelC;
+    private javax.swing.JPanel painelN;
     private javax.swing.JTextField tBanheiros;
     private javax.swing.JTextField tCidade;
     private javax.swing.JTextField tEndereco;
@@ -204,4 +208,42 @@ public class CadImoveis extends FormPadrao {
     private javax.swing.JTextField tValor;
     private javax.swing.JFormattedTextField tfCEP;
     // End of variables declaration//GEN-END:variables
+
+
+    @Override
+    public void bConfirmarActionPerformed(ActionEvent ae) {
+        ArrayList imoveis = new ArrayList();
+        imoveis.add(cbTipo.getSelectedItem());
+        imoveis.add(tTamanho.getText());
+        imoveis.add(tfCEP.getText());
+        imoveis.add(tEndereco.getText());
+        imoveis.add(tCidade.getText());
+        imoveis.add(cbEstado.getSelectedItem());
+        imoveis.add(tTamanho.getText());
+        imoveis.add(tQuartos.getText());
+        imoveis.add(tBanheiros.getText());
+        imoveis.add(tValor.getText());
+        
+        JOptionPane.showMessageDialog(null, "Itens inseridos com sucesso!");
+        for (int i = 0; i < imoveis.size(); i++) {
+            System.out.println(imoveis.get(i));
+        }
+    }
+
+    @Override
+    public void bLimparActionPerformed(ActionEvent ae) {
+        tTamanho.setText("");
+        tfCEP.setText("");
+        tEndereco.setText("");
+        tCidade.setText("");
+        tTamanho.setText("");
+        tQuartos.setText("");
+        tBanheiros.setText("");
+        tValor.setText("");
+    }
+
+    @Override
+    public void bCancelarActionPerformed(ActionEvent ae) {
+        this.dispose();
+    }
 }

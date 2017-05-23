@@ -5,6 +5,10 @@
  */
 package Controle;
 
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pedrowarmlingbotelho
@@ -16,6 +20,7 @@ public class CadCliente extends FormPadrao {
      */
     public CadCliente() {
         initComponents();
+        
     }
 
     /**
@@ -37,7 +42,6 @@ public class CadCliente extends FormPadrao {
         lCEP = new javax.swing.JLabel();
         lUF = new javax.swing.JLabel();
         lCpf = new javax.swing.JLabel();
-        tTelefone = new javax.swing.JTextField();
         tId = new javax.swing.JTextField();
         tCidade = new javax.swing.JTextField();
         lNascimento = new javax.swing.JLabel();
@@ -46,6 +50,7 @@ public class CadCliente extends FormPadrao {
         lTelefone = new javax.swing.JLabel();
         tfCEP = new javax.swing.JFormattedTextField();
         lNome = new javax.swing.JLabel();
+        tTelefone = new javax.swing.JFormattedTextField();
 
         setName("Cadastro de Cliente"); // NOI18N
 
@@ -91,6 +96,12 @@ public class CadCliente extends FormPadrao {
 
         lNome.setText("Nome:");
 
+        try {
+            tTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout painelCLayout = new javax.swing.GroupLayout(painelC);
         painelC.setLayout(painelCLayout);
         painelCLayout.setHorizontalGroup(
@@ -109,10 +120,10 @@ public class CadCliente extends FormPadrao {
                         .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tNome, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tCPF, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tNome, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tTelefone, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tCPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))))
                     .addGroup(painelCLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -131,7 +142,7 @@ public class CadCliente extends FormPadrao {
                         .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         painelCLayout.setVerticalGroup(
             painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +152,7 @@ public class CadCliente extends FormPadrao {
                     .addComponent(lId)
                     .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -170,7 +181,7 @@ public class CadCliente extends FormPadrao {
                     .addComponent(tCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lUF)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         getContentPane().add(painelC, java.awt.BorderLayout.CENTER);
@@ -197,7 +208,44 @@ public class CadCliente extends FormPadrao {
     private javax.swing.JTextField tId;
     private javax.swing.JFormattedTextField tNascimento;
     private javax.swing.JTextField tNome;
-    private javax.swing.JTextField tTelefone;
+    private javax.swing.JFormattedTextField tTelefone;
     private javax.swing.JFormattedTextField tfCEP;
     // End of variables declaration//GEN-END:variables
+
+
+    @Override
+    public void bLimparActionPerformed(ActionEvent ae) {
+        tId.setText("");
+        tNome.setText("");
+        tNascimento.setText("");
+        tCPF.setText("");
+        tTelefone.setText("");
+        tfCEP.setText("");
+        tEndereco.setText("");
+        tCidade.setText("");
+    }
+
+    @Override
+    public void bCancelarActionPerformed(ActionEvent ae) {
+        this.dispose();
+    }
+
+    @Override
+    public void bConfirmarActionPerformed(ActionEvent ae) {
+        ArrayList clientes = new ArrayList();
+        clientes.add(tId.getText());
+        clientes.add(tNome.getText());
+        clientes.add(tNascimento.getText());
+        clientes.add(tCPF.getText());
+        clientes.add(tTelefone.getText());
+        clientes.add(tfCEP.getText());
+        clientes.add(tEndereco.getText());
+        clientes.add(tCidade.getText());
+        clientes.add(cbEstado.getSelectedItem());
+        
+        JOptionPane.showMessageDialog(null, "Itens inseridos com sucesso!");
+        for (int i = 0; i < clientes.size(); i++) {
+            System.out.println(clientes.get(i));
+        }
+    }
 }
