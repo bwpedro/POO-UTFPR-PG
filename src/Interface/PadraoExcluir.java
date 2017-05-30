@@ -37,6 +37,7 @@ public abstract class PadraoExcluir extends javax.swing.JInternalFrame implement
         lId = new javax.swing.JLabel();
         tId = new javax.swing.JTextField();
         bConsultar = new javax.swing.JButton();
+        bConfirmar = new javax.swing.JButton();
         painelS = new javax.swing.JPanel();
         bExcluir = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
@@ -44,6 +45,8 @@ public abstract class PadraoExcluir extends javax.swing.JInternalFrame implement
         lId.setText("Identificação:");
 
         bConsultar.setText("Consultar");
+
+        bConfirmar.setText("Confirmar");
 
         javax.swing.GroupLayout painelNLayout = new javax.swing.GroupLayout(painelN);
         painelN.setLayout(painelNLayout);
@@ -55,9 +58,14 @@ public abstract class PadraoExcluir extends javax.swing.JInternalFrame implement
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bConsultar)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bConfirmar)
+                    .addComponent(bConsultar))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
+
+        painelNLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {bConfirmar, bConsultar});
+
         painelNLayout.setVerticalGroup(
             painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelNLayout.createSequentialGroup()
@@ -66,7 +74,9 @@ public abstract class PadraoExcluir extends javax.swing.JInternalFrame implement
                     .addComponent(lId)
                     .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bConsultar))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bConfirmar)
+                .addContainerGap())
         );
 
         getContentPane().add(painelN, java.awt.BorderLayout.NORTH);
@@ -109,6 +119,7 @@ public abstract class PadraoExcluir extends javax.swing.JInternalFrame implement
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
+    private javax.swing.JButton bConfirmar;
     private javax.swing.JButton bConsultar;
     private javax.swing.JButton bExcluir;
     private javax.swing.JLabel lId;
@@ -123,6 +134,9 @@ public abstract class PadraoExcluir extends javax.swing.JInternalFrame implement
             case "Consultar":
                 bConsultarActionPerformed(e);
                 break;
+            case "Confirmar":
+                bConfirmarActionPerformed(e);
+                break;
             case "Excluir":
                 bExcluirActionPerformed(e);
                 break;
@@ -134,5 +148,6 @@ public abstract class PadraoExcluir extends javax.swing.JInternalFrame implement
     public abstract void bConsultarActionPerformed(ActionEvent ae);
     public abstract void bExcluirActionPerformed(ActionEvent ae);
     public abstract void bCancelarActionPerformed(ActionEvent ae);
+    public abstract void bConfirmarActionPerformed(ActionEvent ae);
 
 }

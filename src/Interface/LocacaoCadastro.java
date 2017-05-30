@@ -149,6 +149,17 @@ public class LocacaoCadastro extends PadraoCadastro {
 
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
+        
+        if((tCliente.getText().equals("")) || 
+           (tImovel.getText().equals("")) || 
+           (tDataInicio.getText().equals("")) || 
+           (tDataFim.getText().equals("")))
+        {
+            JOptionPane.showMessageDialog(null, "Por favor informe todos os campos!");
+            return;
+        }
+        
+        
         Locacao locacao = new Locacao();
         locacao.setIdCliente(Integer.parseInt(tCliente.getText()));
         locacao.setIdImovel(Integer.parseInt(tImovel.getText()));

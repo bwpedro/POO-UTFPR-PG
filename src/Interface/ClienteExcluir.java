@@ -61,6 +61,18 @@ public class ClienteExcluir extends PadraoExcluir {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lNome;
+    private javax.swing.JPanel painelC;
+    private javax.swing.JTextField tNome;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void bConfirmarActionPerformed(ActionEvent ae) {
+        
+    }
+    
     @Override
     public void bConsultarActionPerformed(ActionEvent ae) {
         
@@ -75,11 +87,4 @@ public class ClienteExcluir extends PadraoExcluir {
     public void bCancelarActionPerformed(ActionEvent ae) {
         this.dispose();
     }
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lNome;
-    private javax.swing.JPanel painelC;
-    private javax.swing.JTextField tNome;
-    // End of variables declaration//GEN-END:variables
 }

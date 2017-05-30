@@ -216,6 +216,20 @@ public class ImoveisCadastro extends PadraoCadastro {
 
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
+        
+        if((tId.getText().equals("")) || 
+           (tTamanho.getText().equals("")) || 
+           (tQuartos.getText().equals("")) || 
+           (tBanheiros.getText().equals("")) || 
+           (tValor.getText().equals("")) ||
+           (tfCEP.getText().equals("")) ||
+           (tEndereco.getText().equals("")) ||
+           (tCidade.getText().equals("")))
+        {
+            JOptionPane.showMessageDialog(null, "Por favor informe todos os campos!");
+            return;
+        }
+        
         Imovel imoveis = new Imovel();
         imoveis.setTipo((String)cbTipo.getSelectedItem());
         imoveis.setCep(tfCEP.getText());

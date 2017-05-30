@@ -73,6 +73,20 @@ public class LocacaoExcluir extends PadraoExcluir {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lIdCliente;
+    private javax.swing.JLabel lIdImovel;
+    private javax.swing.JPanel painelC;
+    private javax.swing.JTextField tIdCliente;
+    private javax.swing.JTextField tIdImovel;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void bConfirmarActionPerformed(ActionEvent ae) {
+        
+    }
+    
     @Override
     public void bConsultarActionPerformed(ActionEvent ae) {
         
@@ -87,13 +101,4 @@ public class LocacaoExcluir extends PadraoExcluir {
     public void bCancelarActionPerformed(ActionEvent ae) {
         this.dispose();
     }
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lIdCliente;
-    private javax.swing.JLabel lIdImovel;
-    private javax.swing.JPanel painelC;
-    private javax.swing.JTextField tIdCliente;
-    private javax.swing.JTextField tIdImovel;
-    // End of variables declaration//GEN-END:variables
 }

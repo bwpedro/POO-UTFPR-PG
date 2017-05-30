@@ -86,6 +86,21 @@ public class ImoveisExcluir extends PadraoExcluir {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lCidade;
+    private javax.swing.JLabel lEndereco;
+    private javax.swing.JLabel lUf;
+    private javax.swing.JPanel painelC;
+    private javax.swing.JTextField tCidade;
+    private javax.swing.JTextField tEndereco;
+    private javax.swing.JTextField tUf;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void bConfirmarActionPerformed(ActionEvent ae) {
+        
+    }
+    
     @Override
     public void bConsultarActionPerformed(ActionEvent ae) {
         
@@ -100,15 +115,4 @@ public class ImoveisExcluir extends PadraoExcluir {
     public void bCancelarActionPerformed(ActionEvent ae) {
         this.dispose();
     }
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lCidade;
-    private javax.swing.JLabel lEndereco;
-    private javax.swing.JLabel lUf;
-    private javax.swing.JPanel painelC;
-    private javax.swing.JTextField tCidade;
-    private javax.swing.JTextField tEndereco;
-    private javax.swing.JTextField tUf;
-    // End of variables declaration//GEN-END:variables
 }

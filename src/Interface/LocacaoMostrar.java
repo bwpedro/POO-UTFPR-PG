@@ -30,20 +30,31 @@ public class LocacaoMostrar extends PadraoMostrar {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaLocacao = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaLocacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Cliente", "ID Imóvel", "Data Inicio", "Data Fim"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabelaLocacao);
+        if (tabelaLocacao.getColumnModel().getColumnCount() > 0) {
+            tabelaLocacao.getColumnModel().getColumn(0).setPreferredWidth(15);
+            tabelaLocacao.getColumnModel().getColumn(1).setPreferredWidth(15);
+            tabelaLocacao.getColumnModel().getColumn(2).setPreferredWidth(15);
+            tabelaLocacao.getColumnModel().getColumn(3).setPreferredWidth(15);
+        }
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -53,7 +64,7 @@ public class LocacaoMostrar extends PadraoMostrar {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaLocacao;
     // End of variables declaration//GEN-END:variables
 
     @Override

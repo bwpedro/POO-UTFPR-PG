@@ -228,6 +228,21 @@ public class ClienteCadastro extends PadraoCadastro {
 
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
+        
+        if((tId.getText().equals("")) || 
+           (tNome.getText().equals("")) || 
+           (tNascimento.getText().equals("")) || 
+           (tCPF.getText().equals("")) || 
+           (tTelefone.getText().equals("")) ||
+           (tCPF.getText().equals("")) || 
+           (tfCEP.getText().equals("")) ||
+           (tEndereco.getText().equals("")) ||
+           (tCidade.getText().equals("")))
+        {
+            JOptionPane.showMessageDialog(null, "Por favor informe todos os campos!");
+            return;
+        }
+        
         Cliente clientes = new Cliente();
         clientes.setId(Integer.parseInt(tId.getText()));
         clientes.setNome(tNome.getText());

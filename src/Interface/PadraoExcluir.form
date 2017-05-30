@@ -35,8 +35,11 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="tId" min="-2" pref="120" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="bConsultar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="bConfirmar" linkSize="4" min="-2" max="-2" attributes="0"/>
+                      <Component id="bConsultar" linkSize="4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -49,7 +52,9 @@
                       <Component id="tId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bConsultar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="bConfirmar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -65,6 +70,11 @@
         <Component class="javax.swing.JButton" name="bConsultar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="bConfirmar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Confirmar"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -30,20 +30,42 @@ public class ClienteMostrar extends PadraoMostrar {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaCliente = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nome", "CPF", "Telefone", "CEP", "Cidade", "UF"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelaCliente.setName("Clientes"); // NOI18N
+        jScrollPane1.setViewportView(tabelaCliente);
+        if (tabelaCliente.getColumnModel().getColumnCount() > 0) {
+            tabelaCliente.getColumnModel().getColumn(0).setPreferredWidth(10);
+            tabelaCliente.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tabelaCliente.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tabelaCliente.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tabelaCliente.getColumnModel().getColumn(4).setPreferredWidth(50);
+            tabelaCliente.getColumnModel().getColumn(5).setPreferredWidth(50);
+            tabelaCliente.getColumnModel().getColumn(6).setPreferredWidth(10);
+        }
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -58,6 +80,6 @@ public class ClienteMostrar extends PadraoMostrar {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaCliente;
     // End of variables declaration//GEN-END:variables
 }
