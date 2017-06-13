@@ -128,10 +128,7 @@ public class ImoveisExcluir extends PadraoExcluir {
                         tCidade.setText(imoveis.getCidade());
                         tUf.setText(imoveis.getUf());
                         bExcluir.setEnabled(true);
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Imóvel não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
-                        limparTela();
-                        bExcluir.setEnabled(false);
+                        tId.setEditable(false);
                         return;
                     }
                 }
@@ -142,6 +139,7 @@ public class ImoveisExcluir extends PadraoExcluir {
                 limparTela();
                 bExcluir.setEnabled(false);
             }
+            
         } catch (NumberFormatException ee) {
             JOptionPane.showMessageDialog(this, "Informe um número no campo 'Identificação'", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
             limparTela();
@@ -163,13 +161,21 @@ public class ImoveisExcluir extends PadraoExcluir {
                 if (imoveis.getId() == Integer.parseInt(tId.getText())) {
                     if (JOptionPane.showConfirmDialog(this, "Confirma a exclusão de " + imoveis.getEndereco()+ "?") == JOptionPane.YES_OPTION) {
                         listaImoveis.remove(imoveis);
+                        limparTela();
+                        tId.setEditable(true);
+                    } else {
+                        limparTela();
+                        return;
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Imóvel não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            limparTela();
-            bExcluir.setEnabled(false);
+            
+            if (!bExcluir.isEnabled()) {
+                JOptionPane.showMessageDialog(this, "Imóvel não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bExcluir.setEnabled(false);
+            }
+            
         } catch (ConcurrentModificationException e) {
             JOptionPane.showMessageDialog(null, "Imóvel removido com sucesso!");
             limparTela();

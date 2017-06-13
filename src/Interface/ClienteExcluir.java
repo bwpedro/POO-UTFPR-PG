@@ -100,6 +100,7 @@ public class ClienteExcluir extends PadraoExcluir {
                     if (cliente.getId() == Integer.parseInt(tId.getText())) {
                         tNome.setText(cliente.getNome());
                         bExcluir.setEnabled(true);
+                        tId.setEditable(false);
                         return;
                     }
                 }
@@ -108,7 +109,6 @@ public class ClienteExcluir extends PadraoExcluir {
             if (!bExcluir.isEnabled()) {
                 JOptionPane.showMessageDialog(this, "Cliente não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
                 limparTela();
-                System.out.println("2");
                 bExcluir.setEnabled(false);
             }
         } catch (NumberFormatException ee) {
@@ -133,22 +133,20 @@ public class ClienteExcluir extends PadraoExcluir {
                     if (JOptionPane.showConfirmDialog(this, "Confirma a exclusão de " + cliente.getNome() + "?") == JOptionPane.YES_OPTION) {
                         listaCliente.remove(cliente);
                         limparTela();
-                        System.out.println("1");
-                        return;
+                        tId.setEditable(true);
                     } else {
                         limparTela();
-                        bExcluir.setEnabled(false);
-                        System.out.println("2");
                         return;
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Cliente não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
-                    limparTela();
-                    bExcluir.setEnabled(false);
-                    System.out.println("3");
-                    return;
-                }
+                } 
             }
+            
+            if (!bExcluir.isEnabled()) {
+                JOptionPane.showMessageDialog(this, "Cliente não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bExcluir.setEnabled(false);
+            }
+            
         } catch (ConcurrentModificationException e) {
             JOptionPane.showMessageDialog(null, "Cliente removido com sucesso!");
             limparTela();

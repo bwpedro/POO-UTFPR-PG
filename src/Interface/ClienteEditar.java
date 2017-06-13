@@ -261,11 +261,6 @@ public class ClienteEditar extends PadraoEditar {
                         cbEstado.setSelectedItem(cliente.getUf());
                         bSalvar.setEnabled(true);
                         tId.setEditable(false);
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Cliente não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
-                        limparTela();
-                        bSalvar.setEnabled(false);
-                        System.out.println("1");
                         return;
                     }
                 }
@@ -275,7 +270,6 @@ public class ClienteEditar extends PadraoEditar {
                 JOptionPane.showMessageDialog(this, "Cliente não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
                 limparTela();
                 bSalvar.setEnabled(false);
-                System.out.println("2");
             }
         } catch (NumberFormatException ee) {
             JOptionPane.showMessageDialog(this, "Informe um número no campo 'Identificação'", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
@@ -298,13 +292,15 @@ public class ClienteEditar extends PadraoEditar {
                 clientes.setUf((String) cbEstado.getSelectedItem());
                 limparTela();
                 bSalvar.setEnabled(true);
+                tId.setEditable(true);
                 JOptionPane.showMessageDialog(null, "As modificações foram salvas!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Cliente não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
-                limparTela();
-                bSalvar.setEnabled(false);
-                return;
             }
+        }
+        
+        if (!bSalvar.isEnabled()) {
+            JOptionPane.showMessageDialog(this, "Cliente não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+            limparTela();
+            bSalvar.setEnabled(false);
         }
     }
 

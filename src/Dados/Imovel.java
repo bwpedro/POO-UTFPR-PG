@@ -17,8 +17,8 @@ public class Imovel {
     private String cidade;
     private String uf;
     private String tamanho;
-    private int quartos;
-    private int banheiros;
+    private String quartos;
+    private String banheiros;
     private String valor;
 
     public String getTipo() {
@@ -77,19 +77,19 @@ public class Imovel {
         this.tamanho = tamanho;
     }
 
-    public int getQuartos() {
+    public String getQuartos() {
         return quartos;
     }
 
-    public void setQuartos(int quartos) {
+    public void setQuartos(String quartos) {
         this.quartos = quartos;
     }
 
-    public int getBanheiros() {
+    public String getBanheiros() {
         return banheiros;
     }
 
-    public void setBanheiros(int banheiros) {
+    public void setBanheiros(String banheiros) {
         this.banheiros = banheiros;
     }
 

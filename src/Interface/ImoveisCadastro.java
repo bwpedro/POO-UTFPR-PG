@@ -246,8 +246,8 @@ public class ImoveisCadastro extends PadraoCadastro {
         imoveis.setCidade(tCidade.getText());
         imoveis.setUf((String)cbEstado.getSelectedItem());
         imoveis.setTamanho(tTamanho.getText());
-        imoveis.setQuartos(Integer.parseInt(tQuartos.getText()));
-        imoveis.setBanheiros(Integer.parseInt(tBanheiros.getText()));
+        imoveis.setQuartos(tQuartos.getText());
+        imoveis.setBanheiros(tBanheiros.getText());
         imoveis.setValor(tValor.getText());
         limparTela();
         listaImovel.add(imoveis);

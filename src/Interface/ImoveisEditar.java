@@ -5,7 +5,10 @@
  */
 package Interface;
 
+import Dados.Imovel;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,11 +16,28 @@ import java.awt.event.ActionEvent;
  */
 public class ImoveisEditar extends PadraoEditar {
 
+    ArrayList<Imovel> listaImoveis;
+    javax.swing.JDesktopPane Desktop;
+
     /**
      * Creates new form ImoveisEditar
      */
-    public ImoveisEditar() {
+    public ImoveisEditar(ArrayList<Imovel> listaImoveis, javax.swing.JDesktopPane Desktop) {
         initComponents();
+        this.listaImoveis = listaImoveis;
+        this.Desktop = Desktop;
+    }
+
+    public void limparTela() {
+        tId.setText("");
+        tTamanho.setText("");
+        tfCEP.setText("");
+        tEndereco.setText("");
+        tCidade.setText("");
+        tTamanho.setText("");
+        tQuartos.setText("");
+        tBanheiros.setText("");
+        tValor.setText("");
     }
 
     /**
@@ -29,32 +49,255 @@ public class ImoveisEditar extends PadraoEditar {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        painelC = new javax.swing.JPanel();
+        painelN = new javax.swing.JPanel();
+        lTipo = new javax.swing.JLabel();
+        cbTipo = new javax.swing.JComboBox<>();
+        tTamanho = new javax.swing.JTextField();
+        lId = new javax.swing.JLabel();
+        tId = new javax.swing.JTextField();
+        lTamanho = new javax.swing.JLabel();
+        lQuartos = new javax.swing.JLabel();
+        tBanheiros = new javax.swing.JTextField();
+        lBanheiros = new javax.swing.JLabel();
+        tQuartos = new javax.swing.JTextField();
+        tValor = new javax.swing.JTextField();
+        lValor = new javax.swing.JLabel();
+        lCEP = new javax.swing.JLabel();
+        tfCEP = new javax.swing.JFormattedTextField();
+        lEndereco = new javax.swing.JLabel();
+        tEndereco = new javax.swing.JTextField();
+        lCidade = new javax.swing.JLabel();
+        tCidade = new javax.swing.JTextField();
+        cbEstado = new javax.swing.JComboBox<>();
+        lUF = new javax.swing.JLabel();
+        bConsultar = new javax.swing.JButton();
+        bConfirmar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout painelCLayout = new javax.swing.GroupLayout(painelC);
-        painelC.setLayout(painelCLayout);
-        painelCLayout.setHorizontalGroup(
-            painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+        lTipo.setText("Tipo do Imóvel:");
+
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Apartamento", "Terreno", "Comercial" }));
+
+        lId.setText("Identificação:");
+
+        lTamanho.setText("Tamanho:");
+
+        lQuartos.setText("Qtd. Quartos:");
+
+        lBanheiros.setText("Qtd. Banheiros:");
+
+        lValor.setText("Valor:");
+
+        lCEP.setText("CEP:");
+
+        try {
+            tfCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        lEndereco.setText("Endereço:");
+
+        lCidade.setText("Cidade:");
+
+        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SE", "SP", "TO" }));
+        cbEstado.setSelectedIndex(17);
+
+        lUF.setText("UF:");
+
+        bConsultar.setText("Consultar");
+        bConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultarActionPerformed(evt);
+            }
+        });
+
+        bConfirmar.setText("Confirmar");
+        bConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConfirmarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelNLayout = new javax.swing.GroupLayout(painelN);
+        painelN.setLayout(painelNLayout);
+        painelNLayout.setHorizontalGroup(
+            painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelNLayout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelNLayout.createSequentialGroup()
+                        .addComponent(lTipo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelNLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lCidade)
+                            .addComponent(lTamanho)
+                            .addComponent(lQuartos)
+                            .addComponent(lValor))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(painelNLayout.createSequentialGroup()
+                                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(painelNLayout.createSequentialGroup()
+                                        .addComponent(tQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lBanheiros)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(painelNLayout.createSequentialGroup()
+                                        .addComponent(tCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(lUF)))
+                                .addGap(18, 18, 18)
+                                .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tValor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(painelNLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lCEP)
+                            .addComponent(lEndereco))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(painelNLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(lId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bConfirmar)
+                            .addComponent(bConsultar))))
+                .addGap(60, 60, 60))
         );
-        painelCLayout.setVerticalGroup(
-            painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+        painelNLayout.setVerticalGroup(
+            painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelNLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lId)
+                        .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelNLayout.createSequentialGroup()
+                        .addComponent(bConsultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bConfirmar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lTipo))
+                .addGap(18, 18, 18)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lCEP))
+                .addGap(8, 8, 8)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lEndereco)
+                    .addComponent(tEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lUF)
+                    .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lCidade))
+                .addGap(18, 18, 18)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lTamanho)
+                    .addComponent(tTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lQuartos)
+                    .addComponent(tQuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lBanheiros)
+                    .addComponent(tBanheiros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(painelNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lValor)
+                    .addComponent(tValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
 
-        getContentPane().add(painelC, java.awt.BorderLayout.CENTER);
+        getContentPane().add(painelN, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
+        ImoveisMostrar telaMostrarImoveis = new ImoveisMostrar(listaImoveis);
+        telaMostrarImoveis.setVisible(true);
+        this.Desktop.add(telaMostrarImoveis, 0);
+    }//GEN-LAST:event_bConsultarActionPerformed
+
+    private void bConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmarActionPerformed
+        try {
+            if (tId.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Código não informado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bSalvar.setEnabled(false);
+                return;
+            } else {
+                for (Imovel imovel : listaImoveis) {
+                    if (imovel.getId() == Integer.parseInt(tId.getText())) {
+                        cbTipo.setSelectedItem(imovel.getTipo());
+                        tfCEP.setText(imovel.getCep());
+                        tEndereco.setText(imovel.getEndereco());
+                        tCidade.setText(imovel.getCidade());
+                        cbEstado.setSelectedItem(imovel.getUf());
+                        tTamanho.setText(imovel.getTamanho());
+                        tQuartos.setText(imovel.getQuartos());
+                        tBanheiros.setText(imovel.getBanheiros());
+                        tValor.setText(imovel.getValor());
+                        bSalvar.setEnabled(true);
+                        tId.setEditable(false);
+                        return;
+                    }
+                }
+            }
+
+            if (!bSalvar.isEnabled()) {
+                JOptionPane.showMessageDialog(this, "Imóvel não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bSalvar.setEnabled(false);
+            }
+        } catch (NumberFormatException ee) {
+            JOptionPane.showMessageDialog(this, "Informe um número no campo 'Identificação'", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+            limparTela();
+            bSalvar.setEnabled(false);
+        }
+    }//GEN-LAST:event_bConfirmarActionPerformed
+
     @Override
     public void bSalvarActionPerformed(ActionEvent ae) {
-        
+        for (Imovel imoveis : listaImoveis) {
+            imoveis.setTipo((String) cbTipo.getSelectedItem());
+            imoveis.setCep(tfCEP.getText());
+            imoveis.setEndereco(tEndereco.getText());
+            imoveis.setCidade(tCidade.getText());
+            imoveis.setUf((String) cbEstado.getSelectedItem());
+            imoveis.setTamanho(tTamanho.getText());
+            imoveis.setQuartos(tQuartos.getText());
+            imoveis.setBanheiros(tBanheiros.getText());
+            imoveis.setValor(tValor.getText());
+            limparTela();
+            bSalvar.setEnabled(true);
+            tId.setEditable(true);
+            JOptionPane.showMessageDialog(null, "As modificações foram salvas!");
+        }
+
+        if (!bSalvar.isEnabled()) {
+            JOptionPane.showMessageDialog(this, "Imóvel não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+            limparTela();
+            bSalvar.setEnabled(false);
+        }
     }
 
     @Override
     public void bLimparActionPerformed(ActionEvent ae) {
-        
+        limparTela();
     }
 
     @Override
@@ -64,6 +307,28 @@ public class ImoveisEditar extends PadraoEditar {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel painelC;
+    private javax.swing.JButton bConfirmar;
+    private javax.swing.JButton bConsultar;
+    private javax.swing.JComboBox<String> cbEstado;
+    private javax.swing.JComboBox<String> cbTipo;
+    private javax.swing.JLabel lBanheiros;
+    private javax.swing.JLabel lCEP;
+    private javax.swing.JLabel lCidade;
+    private javax.swing.JLabel lEndereco;
+    private javax.swing.JLabel lId;
+    private javax.swing.JLabel lQuartos;
+    private javax.swing.JLabel lTamanho;
+    private javax.swing.JLabel lTipo;
+    private javax.swing.JLabel lUF;
+    private javax.swing.JLabel lValor;
+    private javax.swing.JPanel painelN;
+    private javax.swing.JTextField tBanheiros;
+    private javax.swing.JTextField tCidade;
+    private javax.swing.JTextField tEndereco;
+    private javax.swing.JTextField tId;
+    private javax.swing.JTextField tQuartos;
+    private javax.swing.JTextField tTamanho;
+    private javax.swing.JTextField tValor;
+    private javax.swing.JFormattedTextField tfCEP;
     // End of variables declaration//GEN-END:variables
 }

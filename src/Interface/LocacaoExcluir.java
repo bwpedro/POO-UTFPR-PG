@@ -112,10 +112,7 @@ public class LocacaoExcluir extends PadraoExcluir {
                         tIdCliente.setText(locacao.getIdCliente());
                         tIdImovel.setText(locacao.getIdImovel());
                         bExcluir.setEnabled(true);
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Locação não cadastrada", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
-                        limparTela();
-                        bExcluir.setEnabled(false);
+                        tId.setEditable(false);
                         return;
                     }
                 }
@@ -126,6 +123,7 @@ public class LocacaoExcluir extends PadraoExcluir {
                 limparTela();
                 bExcluir.setEnabled(false);
             }
+            
         } catch (NumberFormatException ee) {
             JOptionPane.showMessageDialog(this, "Informe um número no campo 'Identificação'", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
             limparTela();
@@ -147,13 +145,21 @@ public class LocacaoExcluir extends PadraoExcluir {
                 if (locacao.getId() == Integer.parseInt(tId.getText())) {
                     if (JOptionPane.showConfirmDialog(this, "Confirma a exclusão de " + locacao.getId()+ "?") == JOptionPane.YES_OPTION) {
                         listaLocacao.remove(locacao);
+                        limparTela();
+                        tId.setEditable(true);
+                    } else {
+                        limparTela();
+                        return;
                     }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Locação não cadastrada", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            limparTela();
-            bExcluir.setEnabled(false);
+            
+            if (!bExcluir.isEnabled()) {
+                JOptionPane.showMessageDialog(this, "Locação não cadastrada", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bExcluir.setEnabled(false);
+            }
+            
         } catch (ConcurrentModificationException e) {
             JOptionPane.showMessageDialog(null, "Locação removida com sucesso!");
             limparTela();
