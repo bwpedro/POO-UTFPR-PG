@@ -243,6 +243,14 @@ public class ClienteCadastro extends PadraoCadastro {
             return;
         }
         
+        for (Cliente cliente : listaCliente) {
+            if (cliente.getId() == Integer.parseInt(tId.getText())) {
+                JOptionPane.showMessageDialog(this, "Já existe um cliente com esse ID", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                tId.setText("");
+                return;
+            }
+        }
+        
         Cliente clientes = new Cliente();
         clientes.setId(Integer.parseInt(tId.getText()));
         clientes.setNome(tNome.getText());
@@ -254,6 +262,7 @@ public class ClienteCadastro extends PadraoCadastro {
         clientes.setCidade(tCidade.getText());
         clientes.setUf((String)cbEstado.getSelectedItem());
         limparTela();
+        listaCliente.add(clientes);
         JOptionPane.showMessageDialog(null, "Itens inseridos com sucesso!");
     }
     

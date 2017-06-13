@@ -5,7 +5,12 @@
  */
 package Interface;
 
+import Dados.Imovel;
+import Dados.Locacao;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,11 +18,22 @@ import java.awt.event.ActionEvent;
  */
 public class LocacaoExcluir extends PadraoExcluir {
 
+    ArrayList<Locacao> listaLocacao;
+    javax.swing.JDesktopPane Desktop;
     /**
      * Creates new form LocacaoExcluir
      */
-    public LocacaoExcluir() {
+    public LocacaoExcluir(ArrayList<Locacao> listaLocacao, javax.swing.JDesktopPane Desktop) {
+        this.listaLocacao = listaLocacao;
+        this.Desktop = Desktop;
+        bExcluir.setEnabled(false);
         initComponents();
+    }
+    
+    public void limparTela(){
+        tId.setText("");
+        tIdCliente.setText("");
+        tIdImovel.setText("");
     }
 
     /**
@@ -84,17 +100,65 @@ public class LocacaoExcluir extends PadraoExcluir {
 
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
-        
+        try {
+            if (tId.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Código não informado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bExcluir.setEnabled(false);
+                return;
+            } else {
+                for (Locacao locacao : listaLocacao) {
+                    if (locacao.getId() == Integer.parseInt(tId.getText())) {
+                        tIdCliente.setText(locacao.getIdCliente());
+                        tIdImovel.setText(locacao.getIdImovel());
+                        bExcluir.setEnabled(true);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Locação não cadastrada", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                        limparTela();
+                        bExcluir.setEnabled(false);
+                        return;
+                    }
+                }
+            }
+
+            if (!bExcluir.isEnabled()) {
+                JOptionPane.showMessageDialog(this, "Locação não cadastrada", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bExcluir.setEnabled(false);
+            }
+        } catch (NumberFormatException ee) {
+            JOptionPane.showMessageDialog(this, "Informe um número no campo 'Identificação'", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+            limparTela();
+            bExcluir.setEnabled(false);
+        }
     }
     
     @Override
     public void bConsultarActionPerformed(ActionEvent ae) {
-        
+        LocacaoMostrar telaMostrarLocacao = new LocacaoMostrar(listaLocacao);
+        telaMostrarLocacao.setVisible(true);
+        this.Desktop.add(telaMostrarLocacao,0);
     }
 
     @Override
     public void bExcluirActionPerformed(ActionEvent ae) {
-        
+        try {
+            for (Locacao locacao : listaLocacao) {
+                if (locacao.getId() == Integer.parseInt(tId.getText())) {
+                    if (JOptionPane.showConfirmDialog(this, "Confirma a exclusão de " + locacao.getId()+ "?") == JOptionPane.YES_OPTION) {
+                        listaLocacao.remove(locacao);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Locação não cadastrada", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            limparTela();
+            bExcluir.setEnabled(false);
+        } catch (ConcurrentModificationException e) {
+            JOptionPane.showMessageDialog(null, "Locação removida com sucesso!");
+            limparTela();
+            bExcluir.setEnabled(false);
+        }
     }
 
     @Override

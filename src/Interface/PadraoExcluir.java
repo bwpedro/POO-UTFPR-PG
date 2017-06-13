@@ -19,6 +19,7 @@ public abstract class PadraoExcluir extends javax.swing.JInternalFrame implement
      */
     public PadraoExcluir() {
         initComponents();
+        bConfirmar.addActionListener(this);
         bConsultar.addActionListener(this);
         bCancelar.addActionListener(this);
         bExcluir.addActionListener(this);
@@ -121,11 +122,11 @@ public abstract class PadraoExcluir extends javax.swing.JInternalFrame implement
     private javax.swing.JButton bCancelar;
     private javax.swing.JButton bConfirmar;
     private javax.swing.JButton bConsultar;
-    private javax.swing.JButton bExcluir;
+    public javax.swing.JButton bExcluir;
     private javax.swing.JLabel lId;
     private javax.swing.JPanel painelN;
     private javax.swing.JPanel painelS;
-    private javax.swing.JTextField tId;
+    public javax.swing.JTextField tId;
     // End of variables declaration//GEN-END:variables
 
     @Override

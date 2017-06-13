@@ -5,7 +5,11 @@
  */
 package Interface;
 
+import Dados.Cliente;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,11 +17,25 @@ import java.awt.event.ActionEvent;
  */
 public class ClienteExcluir extends PadraoExcluir {
 
+    ArrayList<Cliente> listaCliente;
+    javax.swing.JDesktopPane Desktop;
+
     /**
      * Creates new form ClienteExcluir
+     *
+     * @param listaCliente
+     * @param Desktop
      */
-    public ClienteExcluir() {
+    public ClienteExcluir(ArrayList<Cliente> listaCliente, javax.swing.JDesktopPane Desktop) {
+        this.listaCliente = listaCliente;
+        this.Desktop = Desktop;
+        bExcluir.setEnabled(false);
         initComponents();
+    }
+
+    public void limparTela() {
+        tId.setText("");
+        tNome.setText("");
     }
 
     /**
@@ -70,17 +88,72 @@ public class ClienteExcluir extends PadraoExcluir {
 
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
-        
+
+        try {
+            if (tId.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Código não informado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bExcluir.setEnabled(false);
+                return;
+            } else {
+                for (Cliente cliente : listaCliente) {
+                    if (cliente.getId() == Integer.parseInt(tId.getText())) {
+                        tNome.setText(cliente.getNome());
+                        bExcluir.setEnabled(true);
+                        return;
+                    }
+                }
+            }
+
+            if (!bExcluir.isEnabled()) {
+                JOptionPane.showMessageDialog(this, "Cliente não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                System.out.println("2");
+                bExcluir.setEnabled(false);
+            }
+        } catch (NumberFormatException ee) {
+            JOptionPane.showMessageDialog(this, "Informe um número no campo 'Identificação'", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+            limparTela();
+            bExcluir.setEnabled(false);
+        }
     }
-    
+
     @Override
     public void bConsultarActionPerformed(ActionEvent ae) {
-        
+        ClienteMostrar telaMostrarCliente = new ClienteMostrar(listaCliente);
+        telaMostrarCliente.setVisible(true);
+        this.Desktop.add(telaMostrarCliente, 0);
     }
 
     @Override
     public void bExcluirActionPerformed(ActionEvent ae) {
-        
+        try {
+            for (Cliente cliente : listaCliente) {
+                if (cliente.getId() == Integer.parseInt(tId.getText())) {
+                    if (JOptionPane.showConfirmDialog(this, "Confirma a exclusão de " + cliente.getNome() + "?") == JOptionPane.YES_OPTION) {
+                        listaCliente.remove(cliente);
+                        limparTela();
+                        System.out.println("1");
+                        return;
+                    } else {
+                        limparTela();
+                        bExcluir.setEnabled(false);
+                        System.out.println("2");
+                        return;
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cliente não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                    limparTela();
+                    bExcluir.setEnabled(false);
+                    System.out.println("3");
+                    return;
+                }
+            }
+        } catch (ConcurrentModificationException e) {
+            JOptionPane.showMessageDialog(null, "Cliente removido com sucesso!");
+            limparTela();
+            bExcluir.setEnabled(false);
+        }
     }
 
     @Override

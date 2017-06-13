@@ -79,7 +79,7 @@ public abstract class PadraoCadastro extends javax.swing.JInternalFrame implemen
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCancelar;
-    private javax.swing.JButton bConfirmar;
+    public javax.swing.JButton bConfirmar;
     private javax.swing.JButton bLimpar;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

@@ -5,7 +5,11 @@
  */
 package Interface;
 
+import Dados.Imovel;
+import Dados.Locacao;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +17,24 @@ import java.awt.event.ActionEvent;
  */
 public class LocacaoMostrar extends PadraoMostrar {
 
+    DefaultTableModel tabela;
+    ArrayList<Locacao> listaLocacao;
     /**
      * Creates new form LocacaoMostrar
+     * @param listaLocacao
      */
-    public LocacaoMostrar() {
+    public LocacaoMostrar(ArrayList<Locacao> listaLocacao) {
         initComponents();
+        tabela = (DefaultTableModel) tabelaLocacao.getModel();
+        this.listaLocacao = listaLocacao;
+        insereTabela();
+    }
+    
+    public void insereTabela(){
+        for (Locacao locacao : listaLocacao) {
+            Object[] dados = {locacao.getId(), locacao.getIdCliente(), locacao.getIdImovel(), locacao.getDataInicio(), locacao.getDataFim()};
+            tabela.addRow(dados);
+        }
     }
 
     /**
@@ -34,14 +51,14 @@ public class LocacaoMostrar extends PadraoMostrar {
 
         tabelaLocacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
-                "ID Cliente", "ID Imóvel", "Data Inicio", "Data Fim"
+                "ID Locação", "ID Cliente", "ID Imóvel", "Data Inicio", "Data Fim"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -54,6 +71,7 @@ public class LocacaoMostrar extends PadraoMostrar {
             tabelaLocacao.getColumnModel().getColumn(1).setPreferredWidth(15);
             tabelaLocacao.getColumnModel().getColumn(2).setPreferredWidth(15);
             tabelaLocacao.getColumnModel().getColumn(3).setPreferredWidth(15);
+            tabelaLocacao.getColumnModel().getColumn(4).setPreferredWidth(15);
         }
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);

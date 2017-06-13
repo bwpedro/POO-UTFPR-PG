@@ -36,7 +36,7 @@ public class TelaIncio extends javax.swing.JFrame {
     private void initComponents() {
 
         Desktop = new javax.swing.JDesktopPane();
-        jMenuBar2 = new javax.swing.JMenuBar();
+        barraMenu = new javax.swing.JMenuBar();
         mImoveis = new javax.swing.JMenu();
         miCadastrar = new javax.swing.JMenuItem();
         miEditar = new javax.swing.JMenuItem();
@@ -94,7 +94,7 @@ public class TelaIncio extends javax.swing.JFrame {
         });
         mImoveis.add(miExcluir);
 
-        jMenuBar2.add(mImoveis);
+        barraMenu.add(mImoveis);
 
         mClientes.setText("Clientes");
 
@@ -130,7 +130,7 @@ public class TelaIncio extends javax.swing.JFrame {
         });
         mClientes.add(mcExcluir);
 
-        jMenuBar2.add(mClientes);
+        barraMenu.add(mClientes);
 
         mLocacao.setText("Locação");
 
@@ -166,16 +166,16 @@ public class TelaIncio extends javax.swing.JFrame {
         });
         mLocacao.add(mlMostrar);
 
-        jMenuBar2.add(mLocacao);
+        barraMenu.add(mLocacao);
 
         mRelatorio.setText("Relatório");
 
         mrGerar.setText("Gerar");
         mRelatorio.add(mrGerar);
 
-        jMenuBar2.add(mRelatorio);
+        barraMenu.add(mRelatorio);
 
-        setJMenuBar(jMenuBar2);
+        setJMenuBar(barraMenu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,25 +193,25 @@ public class TelaIncio extends javax.swing.JFrame {
     }//GEN-LAST:event_miCadastrarActionPerformed
 
     private void mlAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mlAdicionarActionPerformed
-        LocacaoCadastro telaCadLocacao = new LocacaoCadastro(listaLocacao);
+        LocacaoCadastro telaCadLocacao = new LocacaoCadastro(listaLocacao, listaCliente, listaImovel, Desktop);
         telaCadLocacao.setVisible(true);
         this.Desktop.add(telaCadLocacao);
     }//GEN-LAST:event_mlAdicionarActionPerformed
 
     private void mcExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mcExcluirActionPerformed
-        ClienteExcluir telaExcluirCliente = new ClienteExcluir();
+        ClienteExcluir telaExcluirCliente = new ClienteExcluir(listaCliente, Desktop);
         telaExcluirCliente.setVisible(true);
         this.Desktop.add(telaExcluirCliente);
     }//GEN-LAST:event_mcExcluirActionPerformed
 
     private void mcEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mcEditarActionPerformed
-        ClienteEditar telaEditarCliente = new ClienteEditar();
+        ClienteEditar telaEditarCliente = new ClienteEditar(listaCliente, Desktop);
         telaEditarCliente.setVisible(true);
         this.Desktop.add(telaEditarCliente);
     }//GEN-LAST:event_mcEditarActionPerformed
 
     private void mcMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mcMostrarActionPerformed
-        ClienteMostrar telaMostrarCliente = new ClienteMostrar();
+        ClienteMostrar telaMostrarCliente = new ClienteMostrar(listaCliente);
         telaMostrarCliente.setVisible(true);
         this.Desktop.add(telaMostrarCliente);
     }//GEN-LAST:event_mcMostrarActionPerformed
@@ -223,19 +223,19 @@ public class TelaIncio extends javax.swing.JFrame {
     }//GEN-LAST:event_miEditarActionPerformed
 
     private void miMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miMostrarActionPerformed
-        ImoveisMostrar telaMostrarImoveis = new ImoveisMostrar();
+        ImoveisMostrar telaMostrarImoveis = new ImoveisMostrar(listaImovel);
         telaMostrarImoveis.setVisible(true);
         this.Desktop.add(telaMostrarImoveis);
     }//GEN-LAST:event_miMostrarActionPerformed
 
     private void miExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miExcluirActionPerformed
-        ImoveisExcluir telaExcluirImoveis = new ImoveisExcluir();
+        ImoveisExcluir telaExcluirImoveis = new ImoveisExcluir(listaImovel, Desktop);
         telaExcluirImoveis.setVisible(true);
         this.Desktop.add(telaExcluirImoveis);
     }//GEN-LAST:event_miExcluirActionPerformed
 
     private void mlExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mlExcluirActionPerformed
-        LocacaoExcluir telaExcluirLocacao = new LocacaoExcluir();
+        LocacaoExcluir telaExcluirLocacao = new LocacaoExcluir(listaLocacao, Desktop);
         telaExcluirLocacao.setVisible(true);
         this.Desktop.add(telaExcluirLocacao);
     }//GEN-LAST:event_mlExcluirActionPerformed
@@ -247,7 +247,7 @@ public class TelaIncio extends javax.swing.JFrame {
     }//GEN-LAST:event_mlRenovarActionPerformed
 
     private void mlMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mlMostrarActionPerformed
-        LocacaoMostrar telaMostrarLocacao = new LocacaoMostrar();
+        LocacaoMostrar telaMostrarLocacao = new LocacaoMostrar(listaLocacao);
         telaMostrarLocacao.setVisible(true);
         this.Desktop.add(telaMostrarLocacao);
     }//GEN-LAST:event_mlMostrarActionPerformed
@@ -289,7 +289,7 @@ public class TelaIncio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Desktop;
-    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenu mClientes;
     private javax.swing.JMenu mImoveis;
     private javax.swing.JMenu mLocacao;

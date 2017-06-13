@@ -19,7 +19,7 @@ public class Cliente {
     private String endereco;
     private String cidade;
     private String uf;
-
+    
     public int getId() {
         return id;
     }

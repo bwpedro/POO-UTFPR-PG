@@ -5,7 +5,11 @@
  */
 package Interface;
 
+import Dados.Cliente;
+import Dados.Imovel;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +17,25 @@ import java.awt.event.ActionEvent;
  */
 public class ImoveisMostrar extends PadraoMostrar {
 
+    DefaultTableModel tabela;
+    ArrayList<Imovel> listaImovel;
     /**
      * Creates new form ImoveisMostrar
+     * @param listaImovel
      */
-    public ImoveisMostrar() {
+    public ImoveisMostrar(ArrayList<Imovel> listaImovel) {
         initComponents();
+        tabela = (DefaultTableModel) tabelaImovel.getModel();
+        this.listaImovel = listaImovel;
+        insereTabela();
+    }
+    
+    public void insereTabela(){
+        for (Imovel imoveis : listaImovel) {
+            Object[] dados = {imoveis.getTipo(), imoveis.getId(), imoveis.getEndereco(), imoveis.getCidade(), 
+                                imoveis.getUf(), imoveis.getTamanho(), imoveis.getQuartos(), imoveis.getBanheiros(), imoveis.getValor()};
+            tabela.addRow(dados);
+        }
     }
 
     /**
@@ -30,11 +48,11 @@ public class ImoveisMostrar extends PadraoMostrar {
     private void initComponents() {
 
         tabelaImoveis = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaImovel = new javax.swing.JTable();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaImovel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Tipo", "ID", "Endereço", "Cidade", "UF", "Tamanho", "Quartos", "Banheiros", "Valor"
@@ -55,17 +73,17 @@ public class ImoveisMostrar extends PadraoMostrar {
                 return canEdit [columnIndex];
             }
         });
-        tabelaImoveis.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(10);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(50);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(8);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(10);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(8);
-            jTable1.getColumnModel().getColumn(7).setPreferredWidth(8);
-            jTable1.getColumnModel().getColumn(8).setPreferredWidth(15);
+        tabelaImoveis.setViewportView(tabelaImovel);
+        if (tabelaImovel.getColumnModel().getColumnCount() > 0) {
+            tabelaImovel.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tabelaImovel.getColumnModel().getColumn(1).setPreferredWidth(10);
+            tabelaImovel.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tabelaImovel.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tabelaImovel.getColumnModel().getColumn(4).setPreferredWidth(8);
+            tabelaImovel.getColumnModel().getColumn(5).setPreferredWidth(10);
+            tabelaImovel.getColumnModel().getColumn(6).setPreferredWidth(8);
+            tabelaImovel.getColumnModel().getColumn(7).setPreferredWidth(8);
+            tabelaImovel.getColumnModel().getColumn(8).setPreferredWidth(15);
         }
 
         getContentPane().add(tabelaImoveis, java.awt.BorderLayout.CENTER);
@@ -80,7 +98,7 @@ public class ImoveisMostrar extends PadraoMostrar {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable jTable1;
     private javax.swing.JScrollPane tabelaImoveis;
+    private javax.swing.JTable tabelaImovel;
     // End of variables declaration//GEN-END:variables
 }

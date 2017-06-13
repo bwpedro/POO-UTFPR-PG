@@ -5,7 +5,12 @@
  */
 package Interface;
 
+import Dados.Cliente;
+import Dados.Imovel;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,11 +18,23 @@ import java.awt.event.ActionEvent;
  */
 public class ImoveisExcluir extends PadraoExcluir {
 
+    ArrayList<Imovel> listaImoveis;
+    javax.swing.JDesktopPane Desktop;
     /**
      * Creates new form ImoveisExcluir
      */
-    public ImoveisExcluir() {
+    public ImoveisExcluir(ArrayList<Imovel> listaImoveis, javax.swing.JDesktopPane Desktop) {
+        this.listaImoveis = listaImoveis;
+        this.Desktop = Desktop;
+        bExcluir.setEnabled(false);
         initComponents();
+    }
+    
+    public void limparTela(){
+        tId.setText("");
+        tEndereco.setText("");
+        tCidade.setText("");
+        tUf.setText("");
     }
 
     /**
@@ -98,17 +115,66 @@ public class ImoveisExcluir extends PadraoExcluir {
 
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
-        
+        try {
+            if (tId.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Código não informado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bExcluir.setEnabled(false);
+                return;
+            } else {
+                for (Imovel imoveis : listaImoveis) {
+                    if (imoveis.getId() == Integer.parseInt(tId.getText())) {
+                        tEndereco.setText(imoveis.getEndereco());
+                        tCidade.setText(imoveis.getCidade());
+                        tUf.setText(imoveis.getUf());
+                        bExcluir.setEnabled(true);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Imóvel não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                        limparTela();
+                        bExcluir.setEnabled(false);
+                        return;
+                    }
+                }
+            }
+
+            if (!bExcluir.isEnabled()) {
+                JOptionPane.showMessageDialog(this, "Imóvel não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                limparTela();
+                bExcluir.setEnabled(false);
+            }
+        } catch (NumberFormatException ee) {
+            JOptionPane.showMessageDialog(this, "Informe um número no campo 'Identificação'", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+            limparTela();
+            bExcluir.setEnabled(false);
+        }
     }
     
     @Override
     public void bConsultarActionPerformed(ActionEvent ae) {
-        
+        ImoveisMostrar telaMostrarImoveis = new ImoveisMostrar(listaImoveis);
+        telaMostrarImoveis.setVisible(true);
+        this.Desktop.add(telaMostrarImoveis,0);
     }
 
     @Override
     public void bExcluirActionPerformed(ActionEvent ae) {
-        
+        try {
+            for (Imovel imoveis : listaImoveis) {
+                if (imoveis.getId() == Integer.parseInt(tId.getText())) {
+                    if (JOptionPane.showConfirmDialog(this, "Confirma a exclusão de " + imoveis.getEndereco()+ "?") == JOptionPane.YES_OPTION) {
+                        listaImoveis.remove(imoveis);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Imóvel não cadastrado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            limparTela();
+            bExcluir.setEnabled(false);
+        } catch (ConcurrentModificationException e) {
+            JOptionPane.showMessageDialog(null, "Imóvel removido com sucesso!");
+            limparTela();
+            bExcluir.setEnabled(false);
+        }
     }
 
     @Override

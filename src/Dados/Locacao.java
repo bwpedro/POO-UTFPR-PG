@@ -10,24 +10,25 @@ package Dados;
  * @author pedrowarmlingbotelho
  */
 public class Locacao {
-    private int idCliente;
-    private int idImovel;
+    private int id;
+    private String idCliente;
+    private String idImovel;
     private String dataInicio;
     private String dataFim;
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
-    public int getIdImovel() {
+    public String getIdImovel() {
         return idImovel;
     }
 
-    public void setIdImovel(int idImovel) {
+    public void setIdImovel(String idImovel) {
         this.idImovel = idImovel;
     }
 
@@ -45,5 +46,13 @@ public class Locacao {
 
     public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

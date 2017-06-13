@@ -5,7 +5,10 @@
  */
 package Interface;
 
+import Dados.Cliente;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +16,25 @@ import java.awt.event.ActionEvent;
  */
 public class ClienteMostrar extends PadraoMostrar {
 
+    DefaultTableModel tabela;
+    ArrayList<Cliente> listaCliente;
     /**
      * Creates new form ClienteMostrar
+     * @param listaCliente
      */
-    public ClienteMostrar() {
+    public ClienteMostrar(ArrayList<Cliente> listaCliente) {
         initComponents();
+        tabela = (DefaultTableModel) tabelaCliente.getModel();
+        this.listaCliente = listaCliente;
+        insereTabela();
+    }
+    
+    public void insereTabela(){
+        for (Cliente cliente : listaCliente) {
+            Object[] dados = {cliente.getId(), cliente.getNome(), cliente.getCpf(), cliente.getTelefone(), 
+                                cliente.getCep(), cliente.getCidade(), cliente.getUf()};
+            tabela.addRow(dados);
+        }
     }
 
     /**
@@ -34,7 +51,7 @@ public class ClienteMostrar extends PadraoMostrar {
 
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "CPF", "Telefone", "CEP", "Cidade", "UF"

@@ -230,8 +230,17 @@ public class ImoveisCadastro extends PadraoCadastro {
             return;
         }
         
+        for (Imovel imoveis : listaImovel) {
+            if (imoveis.getId() == Integer.parseInt(tId.getText())) {
+                JOptionPane.showMessageDialog(this, "Já existe um imóvel com esse ID", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                tId.setText("");
+                return;
+            }
+        }
+        
         Imovel imoveis = new Imovel();
         imoveis.setTipo((String)cbTipo.getSelectedItem());
+        imoveis.setId(Integer.parseInt(tId.getText()));
         imoveis.setCep(tfCEP.getText());
         imoveis.setEndereco(tEndereco.getText());
         imoveis.setCidade(tCidade.getText());
@@ -241,6 +250,7 @@ public class ImoveisCadastro extends PadraoCadastro {
         imoveis.setBanheiros(Integer.parseInt(tBanheiros.getText()));
         imoveis.setValor(tValor.getText());
         limparTela();
+        listaImovel.add(imoveis);
         JOptionPane.showMessageDialog(null, "Itens inseridos com sucesso!");
     }
 
@@ -255,6 +265,7 @@ public class ImoveisCadastro extends PadraoCadastro {
     }
     
     public void limparTela(){
+        tId.setText("");
         tTamanho.setText("");
         tfCEP.setText("");
         tEndereco.setText("");

@@ -5,11 +5,13 @@
  */
 package Interface;
 
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author pedrowarmlingbotelho
  */
-public class LocacaoRenovar extends javax.swing.JInternalFrame {
+public class LocacaoRenovar extends PadraoEditar {
 
     /**
      * Creates new form LocacaoRenovar
@@ -27,21 +29,41 @@ public class LocacaoRenovar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        painelC = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout painelCLayout = new javax.swing.GroupLayout(painelC);
+        painelC.setLayout(painelCLayout);
+        painelCLayout.setHorizontalGroup(
+            painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 394, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        painelCLayout.setVerticalGroup(
+            painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 274, Short.MAX_VALUE)
         );
+
+        getContentPane().add(painelC, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @Override
+    public void bSalvarActionPerformed(ActionEvent ae) {
+        
+    }
+
+    @Override
+    public void bLimparActionPerformed(ActionEvent ae) {
+        
+    }
+
+    @Override
+    public void bCancelarActionPerformed(ActionEvent ae) {
+        this.dispose();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel painelC;
     // End of variables declaration//GEN-END:variables
 }

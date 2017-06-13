@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import Dados.Cliente;
+import Dados.Imovel;
 import Dados.Locacao;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -17,13 +19,24 @@ import javax.swing.JOptionPane;
 public class LocacaoCadastro extends PadraoCadastro {
 
     ArrayList<Locacao> listaLocacao;
+    ArrayList<Imovel> listaImoveis;
+    ArrayList<Cliente> listaCliente;
+    javax.swing.JDesktopPane Desktop;
+
     /**
      * Creates new form CadLocacao
+     *
      * @param listaLocacao
+     * @param listaCliente
+     * @param listaImoveis
+     * @param Desktop
      */
-    public LocacaoCadastro(ArrayList<Locacao> listaLocacao) {
-        initComponents();
+    public LocacaoCadastro(ArrayList<Locacao> listaLocacao, ArrayList<Cliente> listaCliente, ArrayList<Imovel> listaImoveis, javax.swing.JDesktopPane Desktop) {
         this.listaLocacao = listaLocacao;
+        this.listaImoveis = listaImoveis;
+        this.listaCliente = listaCliente;
+        this.Desktop = Desktop;
+        initComponents();
     }
 
     /**
@@ -46,6 +59,8 @@ public class LocacaoCadastro extends PadraoCadastro {
         tDataFim = new javax.swing.JFormattedTextField();
         bConsultarCliente = new javax.swing.JButton();
         bConsultarImovel = new javax.swing.JButton();
+        lId = new javax.swing.JLabel();
+        tId = new javax.swing.JTextField();
 
         setName("Adicionar Locação"); // NOI18N
 
@@ -70,42 +85,62 @@ public class LocacaoCadastro extends PadraoCadastro {
         }
 
         bConsultarCliente.setText("Consultar");
+        bConsultarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultarClienteActionPerformed(evt);
+            }
+        });
 
         bConsultarImovel.setText("Consultar");
+        bConsultarImovel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bConsultarImovelActionPerformed(evt);
+            }
+        });
+
+        lId.setText("Id Locação:");
 
         javax.swing.GroupLayout painelCLayout = new javax.swing.GroupLayout(painelC);
         painelC.setLayout(painelCLayout);
         painelCLayout.setHorizontalGroup(
             painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelCLayout.createSequentialGroup()
-                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lDataInicio)
-                            .addComponent(lImovel)
-                            .addComponent(lCliente))
-                        .addGap(18, 18, 18)
-                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tCliente)
-                                .addComponent(tImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(painelCLayout.createSequentialGroup()
-                        .addComponent(lDataFim)
-                        .addGap(18, 18, 18)
-                        .addComponent(tDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)))
-                .addGap(18, 18, 18)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bConsultarCliente)
-                    .addComponent(bConsultarImovel))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(painelCLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(lId))
+                    .addGroup(painelCLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(painelCLayout.createSequentialGroup()
+                                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lDataInicio)
+                                    .addComponent(lImovel)
+                                    .addComponent(lCliente))
+                                .addGap(18, 18, 18)
+                                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tCliente)
+                                    .addComponent(tImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                    .addComponent(tDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tId)))
+                            .addGroup(painelCLayout.createSequentialGroup()
+                                .addComponent(lDataFim)
+                                .addGap(18, 18, 18)
+                                .addComponent(tDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)))
+                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bConsultarCliente)
+                            .addComponent(bConsultarImovel))))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         painelCLayout.setVerticalGroup(
             painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(8, 8, 8)
+                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lId)
+                    .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lCliente)
                     .addComponent(tCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -123,13 +158,25 @@ public class LocacaoCadastro extends PadraoCadastro {
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lDataFim)
                     .addComponent(tDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         getContentPane().add(painelC, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarClienteActionPerformed
+        ClienteMostrar telaMostrarCliente = new ClienteMostrar(listaCliente);
+        telaMostrarCliente.setVisible(true);
+        this.Desktop.add(telaMostrarCliente, 0);
+    }//GEN-LAST:event_bConsultarClienteActionPerformed
+
+    private void bConsultarImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarImovelActionPerformed
+        ImoveisMostrar telaMostrarImoveis = new ImoveisMostrar(listaImoveis);
+        telaMostrarImoveis.setVisible(true);
+        this.Desktop.add(telaMostrarImoveis, 0);
+    }//GEN-LAST:event_bConsultarImovelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -138,34 +185,60 @@ public class LocacaoCadastro extends PadraoCadastro {
     private javax.swing.JLabel lCliente;
     private javax.swing.JLabel lDataFim;
     private javax.swing.JLabel lDataInicio;
+    private javax.swing.JLabel lId;
     private javax.swing.JLabel lImovel;
     private javax.swing.JPanel painelC;
     private javax.swing.JTextField tCliente;
     private javax.swing.JFormattedTextField tDataFim;
     private javax.swing.JFormattedTextField tDataInicio;
+    private javax.swing.JTextField tId;
     private javax.swing.JTextField tImovel;
     // End of variables declaration//GEN-END:variables
 
-
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
-        
-        if((tCliente.getText().equals("")) || 
-           (tImovel.getText().equals("")) || 
-           (tDataInicio.getText().equals("")) || 
-           (tDataFim.getText().equals("")))
-        {
+
+        if ((tId.getText().equals(""))
+                || (tCliente.getText().equals(""))
+                || (tImovel.getText().equals(""))
+                || (tDataInicio.getText().equals(""))
+                || (tDataFim.getText().equals(""))) {
             JOptionPane.showMessageDialog(null, "Por favor informe todos os campos!");
             return;
         }
         
+        for (Locacao locacao : listaLocacao) {
+            if (locacao.getId() == Integer.parseInt(tId.getText())) {
+                JOptionPane.showMessageDialog(this, "Já existe uma locação com esse ID", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
+                tId.setText("");
+                return;
+            }
+        }
         
+        for (Cliente cliente : listaCliente) {
+            if (cliente.getId() != Integer.parseInt(tCliente.getText())) {
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado");
+                tCliente.setText("");
+                return;
+            }
+        }
+        
+        for (Imovel imoveis : listaImoveis) {
+            if (imoveis.getId() != Integer.parseInt(tImovel.getText())) {
+                JOptionPane.showMessageDialog(null, "Imóvel não cadastrado");
+                tImovel.setText("");
+                return;
+            }
+        }
+
         Locacao locacao = new Locacao();
-        locacao.setIdCliente(Integer.parseInt(tCliente.getText()));
-        locacao.setIdImovel(Integer.parseInt(tImovel.getText()));
+        locacao.setId(Integer.parseInt(tId.getText()));
+        locacao.setIdCliente(tCliente.getText());
+        locacao.setIdImovel(tImovel.getText());
         locacao.setDataInicio(tDataInicio.getText());
         locacao.setDataFim(tDataFim.getText());
         limparTela();
+        listaLocacao.add(locacao);
         JOptionPane.showMessageDialog(null, "Itens inseridos com sucesso!");
     }
 
@@ -178,8 +251,9 @@ public class LocacaoCadastro extends PadraoCadastro {
     public void bCancelarActionPerformed(ActionEvent ae) {
         this.dispose();
     }
-    
-    public void limparTela(){
+
+    public void limparTela() {
+        tId.setText("");
         tCliente.setText("");
         tImovel.setText("");
         tDataInicio.setText("");
