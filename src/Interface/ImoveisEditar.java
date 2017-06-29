@@ -26,6 +26,7 @@ public class ImoveisEditar extends PadraoEditar {
         initComponents();
         this.listaImoveis = listaImoveis;
         this.Desktop = Desktop;
+        bSalvar.setEnabled(false);
     }
 
     public void limparTela() {
@@ -233,6 +234,9 @@ public class ImoveisEditar extends PadraoEditar {
     }//GEN-LAST:event_bConsultarActionPerformed
 
     private void bConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmarActionPerformed
+        
+        // try catch se o usuario não informou um número no campo ID
+        
         try {
             if (tId.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Código não informado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
@@ -253,7 +257,7 @@ public class ImoveisEditar extends PadraoEditar {
                         tValor.setText(imovel.getValor());
                         bSalvar.setEnabled(true);
                         tId.setEditable(false);
-                        return;
+                        break;
                     }
                 }
             }
@@ -273,19 +277,22 @@ public class ImoveisEditar extends PadraoEditar {
     @Override
     public void bSalvarActionPerformed(ActionEvent ae) {
         for (Imovel imoveis : listaImoveis) {
-            imoveis.setTipo((String) cbTipo.getSelectedItem());
-            imoveis.setCep(tfCEP.getText());
-            imoveis.setEndereco(tEndereco.getText());
-            imoveis.setCidade(tCidade.getText());
-            imoveis.setUf((String) cbEstado.getSelectedItem());
-            imoveis.setTamanho(tTamanho.getText());
-            imoveis.setQuartos(tQuartos.getText());
-            imoveis.setBanheiros(tBanheiros.getText());
-            imoveis.setValor(tValor.getText());
-            limparTela();
-            bSalvar.setEnabled(true);
-            tId.setEditable(true);
-            JOptionPane.showMessageDialog(null, "As modificações foram salvas!");
+            if (imoveis.getId() == Integer.parseInt(tId.getText())) {
+                imoveis.setTipo((String) cbTipo.getSelectedItem());
+                imoveis.setCep(tfCEP.getText());
+                imoveis.setEndereco(tEndereco.getText());
+                imoveis.setCidade(tCidade.getText());
+                imoveis.setUf((String) cbEstado.getSelectedItem());
+                imoveis.setTamanho(tTamanho.getText());
+                imoveis.setQuartos(tQuartos.getText());
+                imoveis.setBanheiros(tBanheiros.getText());
+                imoveis.setValor(tValor.getText());
+                limparTela();
+                bSalvar.setEnabled(true);
+                tId.setEditable(true);
+                JOptionPane.showMessageDialog(null, "As modificações foram salvas!");
+                break;
+            }
         }
 
         if (!bSalvar.isEnabled()) {
@@ -293,6 +300,8 @@ public class ImoveisEditar extends PadraoEditar {
             limparTela();
             bSalvar.setEnabled(false);
         }
+
+        bSalvar.setEnabled(false);
     }
 
     @Override

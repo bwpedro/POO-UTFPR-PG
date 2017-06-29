@@ -217,6 +217,8 @@ public class ImoveisCadastro extends PadraoCadastro {
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
         
+        // caso o usuario não informe todos os campos
+        
         if((tId.getText().equals("")) || 
            (tTamanho.getText().equals("")) || 
            (tQuartos.getText().equals("")) || 
@@ -230,6 +232,8 @@ public class ImoveisCadastro extends PadraoCadastro {
             return;
         }
         
+        // caso o usuario informe um ID já existente
+        
         for (Imovel imoveis : listaImovel) {
             if (imoveis.getId() == Integer.parseInt(tId.getText())) {
                 JOptionPane.showMessageDialog(this, "Já existe um imóvel com esse ID", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
@@ -237,6 +241,8 @@ public class ImoveisCadastro extends PadraoCadastro {
                 return;
             }
         }
+        
+        // cria lista e insere os elementos
         
         Imovel imoveis = new Imovel();
         imoveis.setTipo((String)cbTipo.getSelectedItem());

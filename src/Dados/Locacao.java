@@ -15,6 +15,7 @@ public class Locacao {
     private String idImovel;
     private String dataInicio;
     private String dataFim;
+    private String valor;
 
     public String getIdCliente() {
         return idCliente;
@@ -54,5 +55,13 @@ public class Locacao {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 }

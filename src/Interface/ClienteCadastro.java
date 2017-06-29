@@ -229,6 +229,8 @@ public class ClienteCadastro extends PadraoCadastro {
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
         
+        // caso o usuario não informe todos os campos
+        
         if((tId.getText().equals("")) || 
            (tNome.getText().equals("")) || 
            (tNascimento.getText().equals("")) || 
@@ -243,6 +245,8 @@ public class ClienteCadastro extends PadraoCadastro {
             return;
         }
         
+        // caso o usuario informe um ID já existente
+        
         for (Cliente cliente : listaCliente) {
             if (cliente.getId() == Integer.parseInt(tId.getText())) {
                 JOptionPane.showMessageDialog(this, "Já existe um cliente com esse ID", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
@@ -250,6 +254,8 @@ public class ClienteCadastro extends PadraoCadastro {
                 return;
             }
         }
+        
+        // cria lista e insere os elementos
         
         Cliente clientes = new Cliente();
         clientes.setId(Integer.parseInt(tId.getText()));

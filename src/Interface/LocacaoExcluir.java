@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Dados.Cliente;
 import Dados.Imovel;
 import Dados.Locacao;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,8 @@ public class LocacaoExcluir extends PadraoExcluir {
     javax.swing.JDesktopPane Desktop;
     /**
      * Creates new form LocacaoExcluir
+     * @param listaLocacao
+     * @param Desktop
      */
     public LocacaoExcluir(ArrayList<Locacao> listaLocacao, javax.swing.JDesktopPane Desktop) {
         this.listaLocacao = listaLocacao;
@@ -100,6 +103,9 @@ public class LocacaoExcluir extends PadraoExcluir {
 
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
+        
+        // try catch se o usuario não informou um número no campo ID
+        
         try {
             if (tId.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Código não informado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
@@ -133,7 +139,7 @@ public class LocacaoExcluir extends PadraoExcluir {
     
     @Override
     public void bConsultarActionPerformed(ActionEvent ae) {
-        LocacaoMostrar telaMostrarLocacao = new LocacaoMostrar(listaLocacao);
+        Relatorio telaMostrarLocacao = new Relatorio(listaLocacao);
         telaMostrarLocacao.setVisible(true);
         this.Desktop.add(telaMostrarLocacao,0);
     }

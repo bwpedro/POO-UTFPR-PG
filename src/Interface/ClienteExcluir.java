@@ -89,6 +89,8 @@ public class ClienteExcluir extends PadraoExcluir {
     @Override
     public void bConfirmarActionPerformed(ActionEvent ae) {
 
+        // try catch se o usuario não informou um número no campo ID
+        
         try {
             if (tId.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Código não informado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);

@@ -50,7 +50,6 @@ public class TelaIncio extends javax.swing.JFrame {
         mLocacao = new javax.swing.JMenu();
         mlCadastrar = new javax.swing.JMenuItem();
         mlEditar = new javax.swing.JMenuItem();
-        mlMostrar = new javax.swing.JMenuItem();
         mlExcluir = new javax.swing.JMenuItem();
         mRelatorio = new javax.swing.JMenu();
         mrGerar = new javax.swing.JMenuItem();
@@ -150,14 +149,6 @@ public class TelaIncio extends javax.swing.JFrame {
         });
         mLocacao.add(mlEditar);
 
-        mlMostrar.setText("Mostrar");
-        mlMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mlMostrarActionPerformed(evt);
-            }
-        });
-        mLocacao.add(mlMostrar);
-
         mlExcluir.setText("Excluir");
         mlExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +162,11 @@ public class TelaIncio extends javax.swing.JFrame {
         mRelatorio.setText("Relatório");
 
         mrGerar.setText("Gerar");
+        mrGerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mrGerarActionPerformed(evt);
+            }
+        });
         mRelatorio.add(mrGerar);
 
         barraMenu.add(mRelatorio);
@@ -246,11 +242,11 @@ public class TelaIncio extends javax.swing.JFrame {
         this.Desktop.add(telaRenovarLocacao);
     }//GEN-LAST:event_mlEditarActionPerformed
 
-    private void mlMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mlMostrarActionPerformed
-        LocacaoMostrar telaMostrarLocacao = new LocacaoMostrar(listaLocacao);
+    private void mrGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mrGerarActionPerformed
+        Relatorio telaMostrarLocacao = new Relatorio(listaLocacao);
         telaMostrarLocacao.setVisible(true);
         this.Desktop.add(telaMostrarLocacao);
-    }//GEN-LAST:event_mlMostrarActionPerformed
+    }//GEN-LAST:event_mrGerarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,7 +301,6 @@ public class TelaIncio extends javax.swing.JFrame {
     private javax.swing.JMenuItem mlCadastrar;
     private javax.swing.JMenuItem mlEditar;
     private javax.swing.JMenuItem mlExcluir;
-    private javax.swing.JMenuItem mlMostrar;
     private javax.swing.JMenuItem mrGerar;
     // End of variables declaration//GEN-END:variables
 }

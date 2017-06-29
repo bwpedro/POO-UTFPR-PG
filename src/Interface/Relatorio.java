@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Dados.Cliente;
 import Dados.Imovel;
 import Dados.Locacao;
 import java.awt.event.ActionEvent;
@@ -15,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author pedrowarmlingbotelho
  */
-public class LocacaoMostrar extends PadraoMostrar {
+public class Relatorio extends PadraoMostrar {
 
     DefaultTableModel tabela;
     ArrayList<Locacao> listaLocacao;
@@ -23,7 +24,7 @@ public class LocacaoMostrar extends PadraoMostrar {
      * Creates new form LocacaoMostrar
      * @param listaLocacao
      */
-    public LocacaoMostrar(ArrayList<Locacao> listaLocacao) {
+    public Relatorio(ArrayList<Locacao> listaLocacao) {
         initComponents();
         tabela = (DefaultTableModel) tabelaLocacao.getModel();
         this.listaLocacao = listaLocacao;
@@ -32,7 +33,7 @@ public class LocacaoMostrar extends PadraoMostrar {
     
     public void insereTabela(){
         for (Locacao locacao : listaLocacao) {
-            Object[] dados = {locacao.getId(), locacao.getIdCliente(), locacao.getIdImovel(), locacao.getDataInicio(), locacao.getDataFim()};
+            Object[] dados = {locacao.getId(), locacao.getIdCliente(), locacao.getIdImovel(), locacao.getValor(), locacao.getDataInicio(), locacao.getDataFim()};
             tabela.addRow(dados);
         }
     }
@@ -54,11 +55,11 @@ public class LocacaoMostrar extends PadraoMostrar {
 
             },
             new String [] {
-                "ID Locação", "ID Cliente", "ID Imóvel", "Data Inicio", "Data Fim"
+                "ID Locação", "Cliente", "Imóvel", "Valor", "Data Inicio", "Data Fim"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -72,6 +73,7 @@ public class LocacaoMostrar extends PadraoMostrar {
             tabelaLocacao.getColumnModel().getColumn(2).setPreferredWidth(15);
             tabelaLocacao.getColumnModel().getColumn(3).setPreferredWidth(15);
             tabelaLocacao.getColumnModel().getColumn(4).setPreferredWidth(15);
+            tabelaLocacao.getColumnModel().getColumn(5).setPreferredWidth(15);
         }
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);

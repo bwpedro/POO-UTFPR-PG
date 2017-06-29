@@ -37,6 +37,7 @@ public abstract class PadraoCadastro extends javax.swing.JInternalFrame implemen
         bConfirmar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
         bLimpar = new javax.swing.JButton();
+        a = new javax.swing.JButton();
 
         bConfirmar.setText("Confirmar");
 
@@ -56,6 +57,10 @@ public abstract class PadraoCadastro extends javax.swing.JInternalFrame implemen
                 .addGap(50, 50, 50)
                 .addComponent(bLimpar)
                 .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {bCancelar, bConfirmar, bLimpar});
@@ -63,7 +68,9 @@ public abstract class PadraoCadastro extends javax.swing.JInternalFrame implemen
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bConfirmar)
                     .addComponent(bCancelar)
@@ -78,6 +85,7 @@ public abstract class PadraoCadastro extends javax.swing.JInternalFrame implemen
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton a;
     private javax.swing.JButton bCancelar;
     public javax.swing.JButton bConfirmar;
     private javax.swing.JButton bLimpar;

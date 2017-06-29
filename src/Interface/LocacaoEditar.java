@@ -32,12 +32,14 @@ public class LocacaoEditar extends PadraoEditar {
         this.listaImoveis = listaImoveis;
         this.listaCliente = listaCliente;
         this.Desktop = Desktop;
+        bSalvar.setEnabled(false);
     }
 
     public void limparTela() {
         tId.setText("");
         tCliente.setText("");
         tImovel.setText("");
+        tValor.setText("");
         tDataInicio.setText("");
         tDataFim.setText("");
     }
@@ -66,10 +68,12 @@ public class LocacaoEditar extends PadraoEditar {
         tId = new javax.swing.JTextField();
         bConsultar = new javax.swing.JButton();
         bConfirmar = new javax.swing.JButton();
+        lValor = new javax.swing.JLabel();
+        tValor = new javax.swing.JTextField();
 
-        lCliente.setText("Id Cliente:");
+        lCliente.setText("Nome do Cliente:");
 
-        lImovel.setText("Id Imóvel:");
+        lImovel.setText("Endereço do Imóvel:");
 
         lDataInicio.setText("Data de Inicio:");
 
@@ -117,47 +121,51 @@ public class LocacaoEditar extends PadraoEditar {
             }
         });
 
+        lValor.setText("Valor:");
+
         javax.swing.GroupLayout painelCLayout = new javax.swing.GroupLayout(painelC);
         painelC.setLayout(painelCLayout);
         painelCLayout.setHorizontalGroup(
             painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelCLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelCLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCLayout.createSequentialGroup()
                         .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lImovel)
+                            .addComponent(lCliente)
+                            .addComponent(lValor)
+                            .addComponent(lDataFim)
+                            .addComponent(lDataInicio))
+                        .addGap(18, 18, 18)
+                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelCLayout.createSequentialGroup()
-                                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lDataInicio)
-                                    .addComponent(lImovel)
-                                    .addComponent(lCliente))
-                                .addGap(18, 18, 18)
                                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tCliente)
-                                    .addComponent(tImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(tDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tId)))
+                                    .addComponent(tImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bConsultarCliente)
+                                    .addComponent(bConsultarImovel)))
+                            .addComponent(tValor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCLayout.createSequentialGroup()
+                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelCLayout.createSequentialGroup()
-                                .addComponent(lDataFim)
-                                .addGap(18, 18, 18)
-                                .addComponent(tDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54))))
-                    .addGroup(painelCLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(lId)
-                        .addGap(176, 176, 176)))
-                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bConsultarCliente)
-                    .addComponent(bConsultarImovel)
-                    .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(bConfirmar)
-                        .addComponent(bConsultar)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                                .addGap(97, 97, 97)
+                                .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(painelCLayout.createSequentialGroup()
+                                .addComponent(lId)
+                                .addGap(176, 176, 176)))
+                        .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bConfirmar)
+                            .addComponent(bConsultar))))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         painelCLayout.setVerticalGroup(
             painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelCLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lId)
@@ -166,7 +174,7 @@ public class LocacaoEditar extends PadraoEditar {
                         .addComponent(bConsultar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bConfirmar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lCliente)
                     .addComponent(tCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,13 +186,17 @@ public class LocacaoEditar extends PadraoEditar {
                     .addComponent(bConsultarImovel))
                 .addGap(18, 18, 18)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lValor))
+                .addGap(23, 23, 23)
+                .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lDataInicio)
                     .addComponent(tDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lDataFim)
                     .addComponent(tDataFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
+                .addContainerGap())
         );
 
         getContentPane().add(painelC, java.awt.BorderLayout.CENTER);
@@ -205,12 +217,15 @@ public class LocacaoEditar extends PadraoEditar {
     }//GEN-LAST:event_bConsultarImovelActionPerformed
 
     private void bConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConsultarActionPerformed
-        LocacaoMostrar telaMostrarLocacao = new LocacaoMostrar(listaLocacao);
+        Relatorio telaMostrarLocacao = new Relatorio(listaLocacao);
         telaMostrarLocacao.setVisible(true);
         this.Desktop.add(telaMostrarLocacao, 0);
     }//GEN-LAST:event_bConsultarActionPerformed
 
     private void bConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmarActionPerformed
+       
+        // try catch se o usuario não informou um número no campo ID
+        
         try {
             if (tId.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Código não informado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
@@ -222,11 +237,12 @@ public class LocacaoEditar extends PadraoEditar {
                     if (locacao.getId() == Integer.parseInt(tId.getText())) {
                         tCliente.setText(locacao.getIdCliente());
                         tImovel.setText(locacao.getIdImovel());
+                        tValor.setText(locacao.getValor());
                         tDataInicio.setText(locacao.getDataInicio());
                         tDataFim.setText(locacao.getDataFim());
                         bSalvar.setEnabled(true);
                         tId.setEditable(false);
-                        return;
+                        break;
                     }
                 }
             }
@@ -250,12 +266,14 @@ public class LocacaoEditar extends PadraoEditar {
                 locacao.setId(Integer.parseInt(tId.getText()));
                 locacao.setIdCliente(tCliente.getText());
                 locacao.setIdImovel(tImovel.getText());
+                locacao.setValor(tValor.getText());
                 locacao.setDataInicio(tDataInicio.getText());
                 locacao.setDataFim(tDataFim.getText());
                 limparTela();
                 bSalvar.setEnabled(true);
                 tId.setEditable(true);
                 JOptionPane.showMessageDialog(null, "As modificações foram salvas!");
+                break;
             }
         }
 
@@ -264,6 +282,8 @@ public class LocacaoEditar extends PadraoEditar {
             limparTela();
             bSalvar.setEnabled(false);
         }
+        
+        bSalvar.setEnabled(false);
     }
 
     @Override
@@ -287,11 +307,13 @@ public class LocacaoEditar extends PadraoEditar {
     private javax.swing.JLabel lDataInicio;
     private javax.swing.JLabel lId;
     private javax.swing.JLabel lImovel;
+    private javax.swing.JLabel lValor;
     private javax.swing.JPanel painelC;
     private javax.swing.JTextField tCliente;
     private javax.swing.JFormattedTextField tDataFim;
     private javax.swing.JFormattedTextField tDataInicio;
     private javax.swing.JTextField tId;
     private javax.swing.JTextField tImovel;
+    private javax.swing.JTextField tValor;
     // End of variables declaration//GEN-END:variables
 }

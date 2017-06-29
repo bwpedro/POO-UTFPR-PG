@@ -242,6 +242,9 @@ public class ClienteEditar extends PadraoEditar {
     }//GEN-LAST:event_bConsultarActionPerformed
 
     private void bConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfirmarActionPerformed
+        
+        // try catch se o usuario não informou um número no campo ID
+        
         try {
             if (tId.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Código não informado", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
@@ -261,7 +264,7 @@ public class ClienteEditar extends PadraoEditar {
                         cbEstado.setSelectedItem(cliente.getUf());
                         bSalvar.setEnabled(true);
                         tId.setEditable(false);
-                        return;
+                        break;
                     }
                 }
             }
@@ -294,6 +297,7 @@ public class ClienteEditar extends PadraoEditar {
                 bSalvar.setEnabled(true);
                 tId.setEditable(true);
                 JOptionPane.showMessageDialog(null, "As modificações foram salvas!");
+                break;
             }
         }
         
@@ -302,6 +306,8 @@ public class ClienteEditar extends PadraoEditar {
             limparTela();
             bSalvar.setEnabled(false);
         }
+        
+        bSalvar.setEnabled(false);
     }
 
     @Override
